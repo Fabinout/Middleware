@@ -1,8 +1,7 @@
 package web;
 
-import java.util.List;
-
 import model.SourceFile;
+import model.SourceFiles;
 
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
@@ -11,13 +10,13 @@ import org.restlet.resource.ServerResource;
 public class SourceFilesResource extends ServerResource {
 
     @Get
-    public List<SourceFile> retrieve() {
+    public SourceFiles retrieve() {
         return Server.sourcefiles;
     }
 
     @Post
     public void store(SourceFile sourcefile) {
-    	Server.sourcefiles.add(sourcefile);
+    	Server.sourcefiles.set(sourcefile);
     }
 
 }
