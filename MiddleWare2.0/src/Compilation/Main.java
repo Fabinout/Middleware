@@ -98,11 +98,11 @@ public class Main {
 		}
 	}
 
-	public static Result compile(SourceFile sourceFile) {
+	public static Result compile(String string) {
 		Result myResult=null;
 		
 		try {
-			myResult=runProcess("javac "+sourceFile+".java");
+			myResult=runProcess("javac "+string+".java");
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -112,12 +112,12 @@ public class Main {
 		
 	}
 
-	public static Result run(SourceFile sourceFile) {
+	public static Result run(String string) {
 
 		Result myResult=null;
 		
 		try {
-			myResult=runProcess("java "+sourceFile);
+			myResult=runProcess("java "+string);
 		} catch (Exception e) {
 			
 			e.printStackTrace();

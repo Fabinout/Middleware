@@ -29,7 +29,7 @@ public class RunResource extends ServerResource {
 	@Get
 	public Result run() {
 		String name = (String) getRequest().getAttributes().get("name");
-		return Main.run(Server.sourcefiles.get(name));
+		return Main.run(Server.sourcefiles.get(name).getName());
 	}
 
 }

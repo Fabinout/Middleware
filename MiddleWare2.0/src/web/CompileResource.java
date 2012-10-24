@@ -29,7 +29,7 @@ public class CompileResource extends ServerResource {
 	@Get
 	public Result compile() {
 		String name = (String) getRequest().getAttributes().get("name");
-		return Main.compile(Server.sourcefiles.get(name + ".java"));
+		return Main.compile(Server.sourcefiles.get(name).getName());
 	}
 
 }
