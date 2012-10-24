@@ -39,13 +39,10 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-		
-		String dossierURI = "C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0\\src\\Compilation\\";
-		String dossierURIBin="C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0\\bin\\Compilation\\";
-		String nomClasse = "Exercice";
 
 		String[] envp = null;
-		File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
+		File dir = new File("/home/paul/Documents/code/aca-middleware/MiddleWare2.0/");
+		//File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
 		
 		try {			
 			
@@ -54,12 +51,12 @@ public class Main {
 			//runProcess("ls");
 			//runProcess("javac "+"Exercice.java");
 			runProcess("ls",dir);
-			runProcess("javac "+"Exercice.java",dir);
+			runProcess("javac "+"src/Compilation/Exercice.java",dir);
 			System.out.println("testt fonctionne");
 			
 			
 			
-			runProcess("java "+"Exercice", dir);
+			runProcess("java bin/Compilation/Exercice", dir);
 			
 			
 		
