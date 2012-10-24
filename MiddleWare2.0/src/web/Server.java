@@ -14,6 +14,8 @@ public class Server {
 		component.getServers().add(Protocol.HTTP, 8182);
 		component.getDefaultHost().attach("/source", SourceFilesResource.class);
 		component.getDefaultHost().attach("/source/{name}", SourceFileResource.class);
+		component.getDefaultHost().attach("/source/{name}/compile", CompileResource.class);
+		component.getDefaultHost().attach("/source/{name}/run", RunResource.class);
 		component.start();
 	}
 
