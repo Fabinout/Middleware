@@ -23,8 +23,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-import Compilation.Main;
-
 public class SourceFiles extends HashMap<String, SourceFile> {
 	/**
 	 * 
@@ -32,7 +30,7 @@ public class SourceFiles extends HashMap<String, SourceFile> {
 	private static final long serialVersionUID = 1L;
 
 	public SourceFile set(SourceFile s) {
-		File javafile = new File(Main.dir, s.getName() + ".java");
+		File javafile = new File(s.getName() + ".java");
 		try {
 			FileWriter writer = new FileWriter(javafile);
 			writer.write(s.getContent());
@@ -43,8 +41,8 @@ public class SourceFiles extends HashMap<String, SourceFile> {
 	}
 	
 	public SourceFile remove(String name) {
-		File javafile = new File(Main.dir, name + ".java");
-		File classfile = new File(Main.dir, name + ".class");
+		File javafile = new File(name + ".java");
+		File classfile = new File(name + ".class");
 		javafile.delete();
 		classfile.delete();
 		return super.remove(name);

@@ -33,20 +33,20 @@ public class Client {
      */
     public static void main(String[] args) throws Exception {
 
-        ClientResource cr = new ClientResource("http://localhost:8182/source");
+        ClientResource cr = new ClientResource("http://localhost:8183/source");
 
         // Add a source file
         SourceFile s = new SourceFile();
         s.setName("Exemple");
         s.setContent("class Exemple {" +
-        		"public void main (String[] args) {" +
+        		"public static void main (String[] args) {" +
         		"System.out.println(\"test\");" +
         		"}" +
         		"}");
         cr.post(s);
         
         // Compile
-        cr = new ClientResource("http://localhost:8182/source/Exemple/compile");
+        cr = new ClientResource("http://localhost:8183/source/Exemple/compile");
         Result r = cr.get(Result.class);
         System.out.println(r.getOut());
         System.out.println(r.getErr());
@@ -54,7 +54,7 @@ public class Client {
         
 
         // Run
-        cr = new ClientResource("http://localhost:8182/source/Exemple/run");
+        cr = new ClientResource("http://localhost:8183/source/Exemple/run");
         r = cr.get(Result.class);
         System.out.println(r.getOut());
         System.out.println(r.getErr());
