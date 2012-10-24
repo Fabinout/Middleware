@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import model.SourceFile;
+
 
 
 
@@ -96,6 +98,16 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static String compile(SourceFile sourceFile) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String run(SourceFile sourceFile) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -21,10 +21,13 @@ package web;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
+import Compilation.Main;
+
 public class CompileResource extends ServerResource {
 	@Get
 	public String compile() {
-		return "";
+		String name = (String) getRequest().getAttributes().get("name");
+		return Main.compile(Server.sourcefiles.get(name + ".java"));
 	}
 
 }
