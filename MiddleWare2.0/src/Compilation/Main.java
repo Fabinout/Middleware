@@ -15,8 +15,11 @@ import java.io.InputStreamReader;
  */
 public class Main {
 
-	public static final File dir = new File("/home/paul/Documents/code/aca-middleware/MiddleWare2.0/");
-	//public static final File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
+	//public static final File dir = new File("/home/paul/Documents/code/aca-middleware/MiddleWare2.0/");
+	public static final File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
+	public static final String classe = "Exercice";
+	
+	
 	
 	
 	private static void printLines(String name, InputStream ins) throws Exception {
@@ -35,25 +38,36 @@ public class Main {
 		pro.waitFor();
 		System.out.println(command + " exitValue() " + pro.exitValue());
 	}
+	private static void runProcess(String command) throws Exception {
+		Process pro = Runtime.getRuntime().exec(command);
+		printLines(command + " stdout:", pro.getInputStream());
+		printLines(command + " stderr:", pro.getErrorStream());
+		pro.waitFor();
+		System.out.println(command + " exitValue() " + pro.exitValue());
+	}
+	
 	
 	
 	
 
 	public static void main(String[] args) {
 		
+		
+		
+		
 		try {			
 			
 			//runProcess("cd "+dossierURI);
 			System.out.println(dir);
-			//runProcess("ls");
+			runProcess("ls");
 			//runProcess("javac "+"Exercice.java");
-			runProcess("ls",dir);
-			runProcess("javac "+"src/Compilation/Exercice.java",dir);
-			System.out.println("testt fonctionne");
+			//runProcess("ls",dir);
+			runProcess("javac "+classe+".java");
+			System.out.println("compile");
 			
 			
 			
-			runProcess("java bin/Compilation/Exercice", dir);
+			runProcess("java "+classe);
 			
 			
 		
@@ -62,4 +76,6 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+
+
 }

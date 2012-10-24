@@ -27,18 +27,7 @@ public class TestClient {
         FileReader rs = new FileReader(new File(Main.dir, "/src/Compilation/Exercice.java)"));
         char[] bs = new char[8];
         
-        
-        // Retrieve a representation
-        Customer customer = cr.get(Customer.class);
-        System.out.println(customer);
-
-        // Update the target resource
-        customer.setName("John");
-        cr.put(customer);
-
-        // Retrieve the updated version
-        customer = cr.get(Customer.class);
-        System.out.println(customer);
+       
     }
 
 }
