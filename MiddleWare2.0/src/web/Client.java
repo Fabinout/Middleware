@@ -1,17 +1,11 @@
 package web;
 
-import java.io.File;
-import java.io.FileReader;
-import java.nio.CharBuffer;
-
 import model.SourceFile;
 
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import Compilation.Main;
-
-public class TestClient {
+public class Client {
 
     /**
      * @param args
@@ -24,8 +18,13 @@ public class TestClient {
         // Add a source file
         SourceFile s = new SourceFile();
         s.setName("exemple");
-        FileReader rs = new FileReader(new File(Main.dir, "/src/Compilation/Exercice.java)"));
-        char[] bs = new char[8];
+        s.setContent("class Exemple {" +
+        		"public void main (String[] args) {" +
+        		"System.out.println(\"test\");" +
+        		"}" +
+        		"}");
+        cr.post(s);
+        
         
        
     }

@@ -3,7 +3,7 @@ package web;
 import org.restlet.Component;
 import org.restlet.data.Protocol;
 
-public class TestServer {
+public class Server {
 
     public static void main(String[] args) throws Exception {
         Component component = new Component();
