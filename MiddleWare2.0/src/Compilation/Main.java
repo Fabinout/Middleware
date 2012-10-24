@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import com.thoughtworks.xstream.converters.extended.ToStringConverter;
+
 import model.Result;
 import model.SourceFile;
 
@@ -45,29 +47,29 @@ public class Main {
 	
 	
 	
-	
-	private static void printLines(String name, InputStream ins) throws Exception {
+	@Deprecated
+	private static String printLines(String name, InputStream ins) throws Exception {
 		String line = null;
+		String toReturn= new String("");
 		BufferedReader in = new BufferedReader(
 				new InputStreamReader(ins));
 		while ((line = in.readLine()) != null) {
-			System.out.println(name + " " + line);
+			toReturn += (name + " " + line+"\n");
 		}
+		
+		return toReturn;
 	}
 
-	private static void runProcess(String command, File dir) throws Exception {
-		Process pro = Runtime.getRuntime().exec(command, null, dir );
-		printLines(command + " stdout:", pro.getInputStream());
-		printLines(command + " stderr:", pro.getErrorStream());
+
+	private static Result runProcess(String command) throws Exception {
+		Result myResult = new Result();
+		Process pro = Runtime.getRuntime().exec(command );
+		myResult.setOut(pro.getInputStream().toString());
+		myResult.setErr(pro.getErrorStream().toString());
 		pro.waitFor();
-		System.out.println(command + " exitValue() " + pro.exitValue());
-	}
-	private static void runProcess(String command) throws Exception {
-		Process pro = Runtime.getRuntime().exec(command);
-		printLines(command + " stdout:", pro.getInputStream());
-		printLines(command + " stderr:", pro.getErrorStream());
-		pro.waitFor();
-		System.out.println(command + " exitValue() " + pro.exitValue());
+		myResult.setRc(pro.exitValue());
+		
+		return myResult;
 	}
 	
 	
@@ -82,16 +84,11 @@ public class Main {
 		try {			
 			
 			//runProcess("cd "+dossierURI);
-			System.out.println(dir);
-			runProcess("ls");
-			//runProcess("javac "+"Exercice.java");
-			//runProcess("ls",dir);
-			runProcess("javac "+classe+".java");
-			System.out.println("compile");
+			System.out.println(runProcess("ls"));
+			System.out.println(runProcess("javac Exercice.java"));
+			System.out.println(runProcess("java Exercice"));
 			
-			
-			
-			runProcess("java "+classe);
+			//runProcess("java "+classe);
 			
 			
 		
@@ -102,13 +99,32 @@ public class Main {
 	}
 
 	public static Result compile(SourceFile sourceFile) {
-		// TODO Auto-generated method stub
-		return null;
+		Result myResult=null;
+		
+		try {
+			myResult=runProcess("javac "+sourceFile+".java");
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return myResult;
+		
 	}
 
 	public static Result run(SourceFile sourceFile) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Result myResult=null;
+		
+		try {
+			myResult=runProcess("java "+sourceFile);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return myResult;
+		
 	}
 
 
