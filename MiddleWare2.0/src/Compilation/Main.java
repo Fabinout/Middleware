@@ -15,7 +15,8 @@ import java.io.InputStreamReader;
  */
 public class Main {
 
-	
+	public static final File dir = new File("/home/paul/Documents/code/aca-middleware/MiddleWare2.0/");
+	//public static final File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
 	
 	
 	private static void printLines(String name, InputStream ins) throws Exception {
@@ -39,10 +40,6 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-
-		String[] envp = null;
-		File dir = new File("/home/paul/Documents/code/aca-middleware/MiddleWare2.0/");
-		//File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
 		
 		try {			
 			
