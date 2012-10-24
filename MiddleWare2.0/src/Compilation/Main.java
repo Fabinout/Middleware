@@ -47,14 +47,14 @@ public class Main {
 	
 	
 	
-	@Deprecated
-	private static String printLines(String name, InputStream ins) throws Exception {
+
+	private static String printLines(InputStream ins) throws Exception {
 		String line = null;
 		String toReturn= new String("");
 		BufferedReader in = new BufferedReader(
 				new InputStreamReader(ins));
 		while ((line = in.readLine()) != null) {
-			toReturn += (name + " " + line+"\n");
+			toReturn += (" " + line+"\n");
 		}
 		
 		return toReturn;
@@ -64,8 +64,8 @@ public class Main {
 	private static Result runProcess(String command) throws Exception {
 		Result myResult = new Result();
 		Process pro = Runtime.getRuntime().exec(command );
-		myResult.setOut(pro.getInputStream().toString());
-		myResult.setErr(pro.getErrorStream().toString());
+		myResult.setOut(printLines(pro.getInputStream()));
+		myResult.setErr(printLines(pro.getErrorStream()));
 		pro.waitFor();
 		myResult.setRc(pro.exitValue());
 		
