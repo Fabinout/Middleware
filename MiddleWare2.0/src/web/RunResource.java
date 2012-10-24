@@ -18,6 +18,8 @@
  */
 package web;
 
+import model.Result;
+
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
@@ -25,7 +27,7 @@ import Compilation.Main;
 
 public class RunResource extends ServerResource {
 	@Get
-	public String run() {
+	public Result run() {
 		String name = (String) getRequest().getAttributes().get("name");
 		return Main.run(Server.sourcefiles.get(name));
 	}
