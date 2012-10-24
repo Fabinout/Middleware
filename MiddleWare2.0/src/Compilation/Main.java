@@ -17,6 +17,8 @@ public class Main {
 
 	//public static final File dir = new File("/home/paul/Documents/code/aca-middleware/MiddleWare2.0/");
 	public static final File dir = new File("C:\\Users\\Fabien\\Documents\\Cours\\GS2\\Spring\\Middleware2.0");
+	//public static final File dir = new File("C:\\Users\\Lionel\\Desktop\\GS2\\CESSA\\workspace\\Middleware\\MiddleWare2.0");
+	
 	public static final String classe = "Exercice";
 	
 	
