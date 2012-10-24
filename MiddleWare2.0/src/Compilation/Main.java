@@ -55,7 +55,7 @@ public class Main {
 			//runProcess("javac "+"Exercice.java");
 			runProcess("ls",dir);
 			runProcess("javac "+"Exercice.java",dir);
-			System.out.println("compilation fonctionne");
+			System.out.println("testt fonctionne");
 			
 			
 			
