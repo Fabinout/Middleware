@@ -3,7 +3,7 @@ package model;
 public class Result {
 	private String out;
 	private String err;
-	private int rc;
+	private int returnCode;
 	public Result() {
 		super();
 	}
@@ -20,10 +20,10 @@ public class Result {
 		this.err = err;
 	}
 	public int getRc() {
-		return rc;
+		return returnCode;
 	}
 	public void setRc(int rc) {
-		this.rc = rc;
+		this.returnCode = rc;
 	}
 
 }
