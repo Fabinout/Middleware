@@ -24,13 +24,15 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class SourceFiles extends HashMap<String, SourceFile> {
+	
+	public static final String uploadDir = "upload/";
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public SourceFile set(SourceFile s) {
-		File javafile = new File(s.getName() + ".java");
+		File javafile = new File(uploadDir + s.getName() + ".java");
 		try {
 			FileWriter writer = new FileWriter(javafile);
 			writer.write(s.getContent());
@@ -41,8 +43,8 @@ public class SourceFiles extends HashMap<String, SourceFile> {
 	}
 	
 	public SourceFile remove(String name) {
-		File javafile = new File(name + ".java");
-		File classfile = new File(name + ".class");
+		File javafile = new File(uploadDir + name + ".java");
+		File classfile = new File(uploadDir + name + ".class");
 		javafile.delete();
 		classfile.delete();
 		return super.remove(name);

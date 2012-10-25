@@ -27,6 +27,7 @@ import com.thoughtworks.xstream.converters.extended.ToStringConverter;
 
 import model.Result;
 import model.SourceFile;
+import model.SourceFiles;
 
 
 
@@ -63,7 +64,8 @@ public class Main {
 
 	private static Result runProcess(String command) throws Exception {
 		Result myResult = new Result();
-		Process pro = Runtime.getRuntime().exec(command );
+		File dir = new File(SourceFiles.uploadDir);
+		Process pro = Runtime.getRuntime().exec(command, null, dir);
 		myResult.setOut(printLines(pro.getInputStream()));
 		myResult.setErr(printLines(pro.getErrorStream()));
 		pro.waitFor();
