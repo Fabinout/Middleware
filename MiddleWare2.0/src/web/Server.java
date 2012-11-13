@@ -29,11 +29,12 @@ public class Server {
 
 	public static void main(String[] args) throws Exception {
 		Component component = new Component();
-		component.getServers().add(Protocol.HTTP, 8183);
+		component.getServers().add(Protocol.HTTP, 8184);
 		component.getDefaultHost().attach("/source", SourceFilesResource.class);
 		component.getDefaultHost().attach("/source/{name}", SourceFileResource.class);
 		component.getDefaultHost().attach("/source/{name}/compile", CompileResource.class);
 		component.getDefaultHost().attach("/source/{name}/run", RunResource.class);
+		component.getDefaultHost().attach("/RemoteCompiling/BuildFromSource", DotNetConnector.class);
 		component.start();
 	}
 

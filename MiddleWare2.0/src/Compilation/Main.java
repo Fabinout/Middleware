@@ -23,10 +23,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import com.thoughtworks.xstream.converters.extended.ToStringConverter;
-
 import model.Result;
-import model.SourceFile;
 import model.SourceFiles;
 
 
